@@ -9,29 +9,6 @@ const Problem = React.lazy(() => import('./views/problem/problem.jsx'));
 const Layout = React.lazy(() => import('./components/layout/layout.jsx'));
 const UnderDevelopment = React.lazy(() => import('./views/under-develompent/under-develompent.jsx'));
 const NotFound = React.lazy(() => import('./views/not-found/not-found.jsx'))
-/*
- * Temporary problems array schema
- */
-const problems = [{
-    title: "201. Bitwise AND of Numbers Range",
-    difficulty: "Medium",
-    acceptance: "42%"
-},{
-    title: "201. Bitwise AND of Numbers Range",
-    difficulty: "Medium",
-    acceptance: "412%"
-},
-    {
-        title: "202. Happy Number",
-        difficulty: "Easy",
-        acceptance: "54.9%"
-    },
-    {
-        title: "203. Remove Linked List Elements",
-        difficulty: "Hard",
-        acceptance: "42%"
-    }];
-
 
 function App() {
     const underDevArr = ["explore", "contest", "interview", "discuss"];

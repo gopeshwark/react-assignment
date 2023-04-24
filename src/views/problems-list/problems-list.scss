@@ -1,0 +1,71 @@
+.problems__list{
+    width: 100%;
+    &Table{
+        table{
+            width: 100%;
+            thead{
+                tr{
+                    td{
+                        padding: 0.75rem;
+                        border-bottom: 1px solid rgb(61,61,61);
+                        box-sizing: border-box;
+                        min-width: 0px;
+                        cursor: pointer;
+                        
+                        &.title{
+                            // flex: 560 0 auto;
+                            width: 340px;
+                        }
+                        &.acceptance{
+                            // flex: 84 0 auto;
+                            width: 84px;
+                        }
+
+                        &.difficulty{
+                            // flex: 84 0 auto;
+                            width: 84px;
+                            
+                        }
+                    }
+                }
+            }
+            
+            tbody{
+                tr{
+                    &:nth-child(2n) {
+                        background-color: #ffffff12;
+                    }
+                    td{
+                        color: #fff;
+                        padding: 0.9rem;
+                        &.easy{
+                            color: rgb(0, 184, 163);
+                        }
+            
+                        &.medium{
+                            color: rgb(255, 192, 30);
+                        }
+            
+                        &.hard{
+                            color: rgb(255, 55, 95);
+                        }
+
+                        height: 100%;
+                        &.title {
+
+                            a{
+                                color: #fff;
+                                height: 100%;
+                                
+                                &:hover{
+                                    color: rgb(10, 132, 255);
+                                    transition: color 200ms ease-in-out;
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
