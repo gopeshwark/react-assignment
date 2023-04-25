@@ -78,7 +78,6 @@ const problems = [{
 
 const ProblemsList = () => {
   const getSlug = (title) => {
-    console.log(title?.split(". ")?.[1]?.trim());
     let slug = title?.split(". ")?.[1]?.trim()?.toLowerCase()?.replaceAll(" ", "-");
     return slug
   }

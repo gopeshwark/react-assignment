@@ -1,0 +1,59 @@
+.question{
+    &__title{
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        color: #fff;
+    }
+
+    &__actions{
+        margin-top: 0.75rem;
+        .tag{
+            font-size: .75rem;
+            line-height: 1rem;
+            padding: 0.25rem 0.625rem;
+            border-radius: 21px;
+        
+            &.medium{
+                color: rgb(255, 192, 30);
+                background-color: rgba(255, 192, 30, 0.15)
+            }
+        }
+    }
+
+    &__desc{
+        margin-top: 1rem;
+        font-size: .75rem;
+        line-height: 1rem;
+
+        p{
+            color: #fff;
+        }
+    }
+
+    &__example{
+        font-size: .75rem;
+        line-height: 1rem;
+        margin-bottom: 1.2rem;
+
+        strong{
+            color: #fff;
+
+        }
+
+        &Details{
+            padding: 0.75rem;
+            background-color: #ffffff12;
+            color: #eff1f6bf;
+            border-radius: 10px;
+        }
+        .heading{
+            font-size: 0.875rem;
+            display: flex;
+            gap: 0.4rem;
+            p{
+                margin: 0;
+            }
+        }
+
+    }
+}

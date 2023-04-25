@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+@import "bootstrap/scss/bootstrap";
 
 *{
   margin:0;
@@ -14,4 +15,9 @@ a{
 
 body{
   background-color: #1a1a1a;
+
+  ::selection {
+    background: #1890ff;
+    color: #fff;
+}
 }
