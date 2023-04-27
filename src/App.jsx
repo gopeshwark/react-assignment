@@ -26,9 +26,9 @@ function App() {
                         {/* problemset/all/ - All problems (see problems array above) */}
                         <Route exact path="problemset/all" element={<ProblemsList/>}/>
                         {/* problems/:problem_slug - A single problem page */}
-                        <Route exact path="problems/:problem_slug" element={<Problem/>}/>
                         {underDevArr?.map((page, i) => <Route key={i}  path={page} element={<UnderDevelopment/>}/>)}
                     </Route>
+                        <Route exact path="problems/:problem_slug" element={<Problem/>}/>
                     <Route path="*" element={<NotFound/>}/>
                     <Route path="/404" element={<NotFound/>}/>
                 </Routes>
