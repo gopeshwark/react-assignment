@@ -1,36 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './description.scss';
+import { useParams } from 'react-router-dom';
+import { makeRequest } from '../../core/axios-instance';
 
 const Description = () => {
+    const params = useParams();
+    const [problem, setProblem] = useState({})
+
+    const getProblems = async () => {
+        makeRequest.post(`/question`, { slug: params?.problem_slug }).then(resp => {
+            console.log(resp);
+            let { question } = resp?.data
+            if (!!question) {
+                setProblem(question)
+            } else {
+                console.log(resp);
+            }
+        })
+    }
+
+    useEffect(() => {
+        getProblems();
+    }, [params?.problem_slug])
+
     return (
         <div className='question'>
-            <span className='question__title'>11. Container With Most Water</span>
+            <span className='question__title'>{problem?.questionId}. {problem?.title}</span>
             <div className='question__actions'>
-                <span className='tag medium'>Medium</span>
+                <span className={`tag ${problem?.difficulty?.toLowerCase()}`}>{problem?.difficulty}</span>
             </div>
             <div className='question__desc'>
-                <p>You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).</p>
-                <p>Find two lines that together with the x-axis form a container, such that the container contains the most water.</p>
-                <p>Return the maximum amount of water a container can store.</p>
-                <p>Notice that you may not slant the container.</p>
+
+                {Array.isArray(problem?.description?.split("\n"))
+                    ? problem?.description?.split("\n")?.map(desc => <p>{desc}</p>)
+                    : <p>{problem?.description}</p>}
                 <p>&nbsp;</p>
             </div>
-            <div className='question__example'>
-                <p><strong>Example 1:</strong></p>
+            {problem?.examples?.map(example => <div className='question__example'>
+                <p><strong>Example {example?.exampleId}:</strong></p>
                 <div className='question__exampleDetails'>
-                    <div className='heading'><strong>Input: </strong><p>height = [1,8,6,2,5,4,8,3,7]</p></div>
-                    <div className='heading'><strong>Output: </strong><p>49</p></div>
-                    <div className='heading'><strong>Explanation: </strong><p>The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.</p></div>
+                    {example?.input && <div className='heading'><strong>Input: </strong><p>{example?.input}</p></div>}
+                    {example?.output && <div className='heading'><strong>Output: </strong><p>{example?.output}</p></div>}
+                    {example?.explanation && <div className='heading'><strong>Explanation: </strong><p>{example?.explanation}</p></div>}
                 </div>
-            </div>
-            <div className='question__example'>
-                <p><strong>Example 1:</strong></p>
-                <div className='question__exampleDetails'>
-                    <div className='heading'><strong>Input: </strong><p>height = [1,8,6,2,5,4,8,3,7]</p></div>
-                    <div className='heading'><strong>Output: </strong><p>49</p></div>
-                    <div className='heading'><strong>Explanation: </strong><p>The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.</p></div>
-                </div>
-            </div>
+            </div>)}
         </div>
     )
 }
