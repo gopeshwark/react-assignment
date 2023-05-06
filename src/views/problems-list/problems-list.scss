@@ -11,6 +11,7 @@
                         box-sizing: border-box;
                         min-width: 0px;
                         cursor: pointer;
+                        font-size: 0.8rem;
                         
                         &.title{
                             // flex: 560 0 auto;
@@ -38,6 +39,8 @@
                     td{
                         color: #fff;
                         padding: 0.9rem;
+                        font-size: 0.8rem;
+
                         &.easy{
                             color: rgb(0, 184, 163);
                         }

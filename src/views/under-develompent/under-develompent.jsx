@@ -3,7 +3,7 @@ import './under-development.scss';
 
 const UnderDevelopment = () => {
   return (
-    <div>UnderDevelopment</div>
+    <div className='under__development'>This page is Under Development</div>
   )
 }
 

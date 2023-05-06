@@ -17,20 +17,20 @@ function App() {
             {/* Add routing here, routes look like - */}
             <React.Suspense fallback={<>...</>}>
                 <Routes>
-                    <Route path="/" element={<Layout/>}>
-                        <Route exact path="" element={<ProblemsList/>}/>
-                        {/* login - Login page */}
-                        <Route exact path="login" element={<Login/>}/>
-                        {/* signup - Signup page */}
-                        <Route exact path="signup" element={<Signup/>}/>
+                    <Route path="/" element={<Layout />}>
+                        <Route exact path="" element={<ProblemsList />} />
                         {/* problemset/all/ - All problems (see problems array above) */}
-                        <Route exact path="problemset/all" element={<ProblemsList/>}/>
+                        <Route exact path="problemset/all" element={<ProblemsList />} />
                         {/* problems/:problem_slug - A single problem page */}
-                        {underDevArr?.map((page, i) => <Route key={i}  path={page} element={<UnderDevelopment/>}/>)}
+                        {underDevArr?.map((page, i) => <Route key={i} path={page} element={<UnderDevelopment />} />)}
                     </Route>
-                        <Route exact path="problems/:problem_slug" element={<Problem/>}/>
-                    <Route path="*" element={<NotFound/>}/>
-                    <Route path="/404" element={<NotFound/>}/>
+                    <Route exact path="problems/:problem_slug" element={<Problem />} />
+                    {/* login - Login page */}
+                    <Route exact path="login" element={<Login />} />
+                    {/* signup - Signup page */}
+                    <Route exact path="signup" element={<Signup />} />
+                    <Route path="*" element={<NotFound />} />
+                    <Route path="/404" element={<NotFound />} />
                 </Routes>
             </React.Suspense>
         </>
