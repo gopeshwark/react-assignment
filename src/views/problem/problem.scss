@@ -50,7 +50,7 @@
         }
         
         .tab-content{
-            height: 85vh;
+            height: 84.5vh;
             
             .tab-pane{
                 background-color: rgb(40, 40, 40);
@@ -79,59 +79,89 @@
         }
 
         &Top{
-            .dropdown{
-                &-toggle{
-                    color: #eff1f6bf;
-                    background-color: #ffffff1a;
-                    font-size: 0.75rem;
-                    font-weight: 500;
-                    padding: 0.375rem 0.5rem;
-                    border-radius: 5px;
-                    border: none;
-                    display: flex;
-                    gap: 0.3rem;
-                    align-items: center;
-                    
-                    svg{
-                        width: 11px;
-                        margin-bottom: 2px;
-                        path{
-                            fill: #eff1f6bf;
-                        }
-                    }
-
-                    &::after{
-                        display: none;
-                    }
-    
-                    &:hover{
-                        background-color: #ffffff24;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            &Dropdown{
+                .dropdown{
+                    &-toggle{
                         color: #eff1f6bf;
-                    }
-                }
-
-                &-menu{
-                    background-color: rgba(48, 48, 48, 1);
-                    filter: drop-shadow(rgba(0, 0, 0, 0.04) 0px 1px 3px) drop-shadow(rgba(0, 0, 0, 0.12) 0px 6px 16px);
-                    padding: 0.5rem;
-                    height: auto;
-                    overflow-y: auto;
-                    overflow-x: hidden;
-                    min-width: 8rem;
-
-                    a{
-                        color: #eff1f6bf;
+                        background-color: #ffffff1a;
                         font-size: 0.75rem;
-                        border-radius: 5px;
+                        font-weight: 500;
                         padding: 0.375rem 0.5rem;
+                        border-radius: 5px;
+                        border: none;
+                        display: flex;
+                        gap: 0.3rem;
+                        align-items: center;
                         
+                        svg{
+                            width: 11px;
+                            margin-bottom: 2px;
+                            path{
+                                fill: #eff1f6bf;
+                            }
+                        }
+    
+                        &::after{
+                            display: none;
+                        }
+        
                         &:hover{
-                            background-color: #ffffff12;
+                            background-color: #ffffff24;
                             color: #eff1f6bf;
                         }
                     }
-
+    
+                    &-menu{
+                        background-color: rgba(48, 48, 48, 1);
+                        filter: drop-shadow(rgba(0, 0, 0, 0.04) 0px 1px 3px) drop-shadow(rgba(0, 0, 0, 0.12) 0px 6px 16px);
+                        padding: 0.5rem;
+                        height: auto;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+                        min-width: 8rem;
+    
+                        a{
+                            color: #eff1f6bf;
+                            font-size: 0.75rem;
+                            border-radius: 5px;
+                            padding: 0.375rem 0.5rem;
+                            
+                            &:hover{
+                                background-color: #ffffff12;
+                                color: #eff1f6bf;
+                            }
+                        }
+    
+                    }
                 }
+            }
+        }
+
+        &Submit{
+            background-color: rgb(40, 40, 40);
+            padding: 0.45rem;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            .submit-btn{
+                margin-right: 20px;
+                outline: none;
+                border: 0;
+                background-color: rgb(44, 187, 93);
+                font-size: 0.75rem;
+                line-height: 1rem;
+                font-weight: 500;
+                padding: 0.25rem 0.75rem;
+                border-radius: 5px;
+
+                &.disable{
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+                
             }
         }
 

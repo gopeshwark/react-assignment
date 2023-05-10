@@ -1,33 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.scss';
 import { Link, useParams } from 'react-router-dom';
+import { AuthContext } from '../../context/auth-context';
 
 const linkArr = [{
-    id:1,
+    id: 1,
     path: "/explore",
     title: "Explore"
-},{
-    id:2,
+}, {
+    id: 2,
     path: "",
     title: "Problems"
-},{
-    id:3,
+}, {
+    id: 3,
     path: "/contest",
     title: "Contest"
-},{
-    id:4,
+}, {
+    id: 4,
     path: "/discuss",
     title: "Discuss"
-},{
-    id:5,
+}, {
+    id: 5,
     path: "/interview",
     title: "Interview"
 }]
 const Header = () => {
+    const { currentUser } = useContext(AuthContext);
     const params = useParams();
-    console.log(params);
+
     const getActiveTab = (path) => {
-        if(params?.['*'] === path) return "nav-items active";
+        if (params?.['*'] === path) return "nav-items active";
         return "nav-items";
     }
     return (
@@ -41,9 +43,10 @@ const Header = () => {
                     <Link className={getActiveTab("/interview")} to="/interview">Interview</Link>
                 </div>
                 <div className='header__navRight'>
-                    <Link className='signup-login' to="/signup">Register</Link>
-                    <span>or</span>
-                    <Link className='signup-login' to="/login">Sign in</Link>
+                    {!currentUser ? <><Link className='signup-login' to="/signup">Register</Link>
+                        <span>or</span>
+                        <Link className='signup-login' to="/login">Sign in</Link></>
+                        : <div className='login-details'>{currentUser}</div>}
                 </div>
             </nav>
         </header>

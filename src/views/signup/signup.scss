@@ -39,7 +39,7 @@
     
                 &-input{
                     width: 100%;
-                    input{
+                    input, select{
                         padding: 8.85px 13px;
                         font-size: 14px;
                         touch-action: manipulation;
@@ -65,51 +65,57 @@
                             box-shadow: 0 0 0 2px rgba(251,192, 46, 0.4);
                         }
                     }
-                        
-                    button.submit-btn{
-                        padding: 0 13px;
-                        border: 0;
-                        color: #fff;
-                        height: 40px;
-                        border-radius: 3px;
-                        line-height: 20px;
-                        font-size: 14px;
-                        transition: 180ms all ease-in-out;
-                        outline: none;
-                        cursor: pointer;
-                        width: 100%;
 
-                        background: linear-gradient(215deg, #546e7a, #37474f);
-                        opacity: 1;
-                        border-radius: 3px;
-                        // transition: 0.18s opacity ease-in-out;
-                        &::before{
-                        }
-                        
-                        &:hover{
-                            background: linear-gradient(35deg, #546e7a, #37474f);
-                            opacity: 0.8;
-                            border-radius: 3px;
-                            transition: 0.18s opacity ease-in-out;
-                        }
+                    option{
+                        color: #000;
                     }
+                    
                 }
+                
+            }
+            button.submit-btn{
+                padding: 0 13px;
+                border: 0;
+                color: #fff;
+                height: 40px;
+                border-radius: 3px;
+                line-height: 20px;
+                font-size: 14px;
+                transition: 180ms all ease-in-out;
+                outline: none;
+                cursor: pointer;
+                width: 100%;
+                margin-top: 20px;
 
-                .custom-actions{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 0.5rem;
-                    // margin-top: 20px;
-                    color: #bdbdbd;
+                background: linear-gradient(215deg, #546e7a, #37474f);
+                opacity: 1;
+                border-radius: 3px;
+                // transition: 0.18s opacity ease-in-out;
+                &::before{
+                }
+                
+                &:hover{
+                    background: linear-gradient(35deg, #546e7a, #37474f);
+                    opacity: 0.8;
+                    border-radius: 3px;
+                    transition: 0.18s opacity ease-in-out;
+                }
+            }
+
+            .custom-actions{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 20px;
+                color: #bdbdbd;
+                font-size: 14px;
+                font-weight: normal;
+                a{
+                    color: #546e7a;
                     font-size: 14px;
-                    font-weight: normal;
-                    a{
-                        color: #546e7a;
-                        font-size: 14px;
-                        line-height: 20px;
-                        cursor: pointer;
-                    }
+                    line-height: 20px;
+                    cursor: pointer;
                 }
             }
 

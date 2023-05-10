@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './problem.scss';
-import { Dropdown, Tab, Tabs } from 'react-bootstrap';
+import { Dropdown, OverlayTrigger, Tab, Tabs, Tooltip } from 'react-bootstrap';
 import Description from '../../components/description/description';
 import Editor from '@monaco-editor/react';
 import Header from '../../components/header/header';
 import { DownArrowIcon } from '../../components/icons/icons.jsx';
 import NoData from '../../components/no-data/no-data';
+import { AuthContext } from '../../context/auth-context';
 
 const tabArr = [
   {
@@ -71,6 +72,7 @@ const languagesArr = [{
 ]
 
 const Problem = () => {
+  const { currentUser } = useContext(AuthContext);
   const editorRef = useRef(null);
   const [eventKey, setEventKey] = useState(tabArr[0]?.eventKey);
   const [selectedLanguage, setSelectedLanguage] = useState(languagesArr[0]);
@@ -108,25 +110,40 @@ const Problem = () => {
           </Tabs>
         </div>
         <div className='problem__editor'>
-          <div className="problem__editorTop">
-            <Dropdown>
-              <Dropdown.Toggle variant="" id="dropdown-basic">
-                {selectedLanguage?.name} <DownArrowIcon />
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {languagesArr?.map(lan => <Dropdown.Item key={lan?.id} onClick={() => setSelectedLanguage(lan)}>{lan?.name}</Dropdown.Item>)}
-              </Dropdown.Menu>
-            </Dropdown>
+          <div className='problem__editorTop'>
+            <div className="problem__editorTopDropdown">
+              <Dropdown>
+                <Dropdown.Toggle variant="" id="dropdown-basic">
+                  {selectedLanguage?.name} <DownArrowIcon />
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {languagesArr?.map(lan => <Dropdown.Item key={lan?.id} onClick={() => setSelectedLanguage(lan)}>{lan?.name}</Dropdown.Item>)}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <Editor
+              height="78vh"
+              theme="vs-dark"
+              path={selectedLanguage.value}
+              defaultLanguage={selectedLanguage.language}
+              defaultValue={selectedLanguage.value?.toString()}
+              onChange={handleEditorChange}
+              onMount={(editor) => (editorRef.current = editor)}
+            />
           </div>
-          <Editor
-            height="85vh"
-            theme="vs-dark"
-            path={selectedLanguage.value}
-            defaultLanguage={selectedLanguage.language}
-            defaultValue={selectedLanguage.value?.toString()}
-            onChange={handleEditorChange}
-            onMount={(editor) => (editorRef.current = editor)}
-          />
+          <div className='problem__editorSubmit'>
+            <OverlayTrigger
+              key={'top'}
+              placement={'top'}
+              overlay={
+                !currentUser ? <Tooltip id={`tooltip-${'top'}`}>
+                  You need to Login/Sign Up to submit.
+                </Tooltip> : <></>
+              }
+            >
+              <button className={`submit-btn ${!currentUser ? 'disable' : ''}`}>Submit</button>
+            </OverlayTrigger>
+          </div>
         </div>
       </div>
     </div>
