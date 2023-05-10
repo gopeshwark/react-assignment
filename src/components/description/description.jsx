@@ -9,7 +9,6 @@ const Description = () => {
 
     const getProblems = async () => {
         makeRequest.post(`/question`, { slug: params?.problem_slug }).then(resp => {
-            console.log(resp);
             let { question } = resp?.data
             if (!!question) {
                 setProblem(question)

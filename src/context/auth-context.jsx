@@ -12,8 +12,14 @@ export const AuthContextProvider = ({ children }) => {
         const res = await axios.post("http://localhost:3001/api/login", inputs, {
             withCredentials: true,
         })
-        console.log(res);
         setCurrentUser(res.data?.data);
+    }
+
+    const logout = async () => {
+        const res = await axios.get("http://localhost:3001/api/logout")
+        if (res) {
+            setCurrentUser(null);
+        }
     }
 
     useEffect(() => {
@@ -21,7 +27,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [currentUser])
 
     return (
-        <AuthContext.Provider value={{ currentUser, login }}>
+        <AuthContext.Provider value={{ currentUser, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

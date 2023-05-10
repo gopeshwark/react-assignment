@@ -25,12 +25,20 @@ const linkArr = [{
     title: "Interview"
 }]
 const Header = () => {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser, logout } = useContext(AuthContext);
     const params = useParams();
 
     const getActiveTab = (path) => {
         if (params?.['*'] === path) return "nav-items active";
         return "nav-items";
+    }
+
+    const handleLogout = async () => {
+        try {
+            await logout()
+        } catch (err) {
+            console.log(err);
+        }
     }
     return (
         <header className='header'>
@@ -46,7 +54,10 @@ const Header = () => {
                     {!currentUser ? <><Link className='signup-login' to="/signup">Register</Link>
                         <span>or</span>
                         <Link className='signup-login' to="/login">Sign in</Link></>
-                        : <div className='login-details'>{currentUser}</div>}
+                        : <>
+                            <div className='login-details'>{currentUser}</div>
+                            <button className='logout' onClick={handleLogout}>logout</button>
+                        </>}
                 </div>
             </nav>
         </header>
